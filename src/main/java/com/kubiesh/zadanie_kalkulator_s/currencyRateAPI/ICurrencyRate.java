@@ -1,5 +1,7 @@
 package com.kubiesh.zadanie_kalkulator_s.currencyRateAPI;
 
-public interface ICurrencyRate {
+import java.math.BigDecimal;
 
+public interface ICurrencyRate {
+	BigDecimal getCurrencyRate(String currencyCode);
 }
