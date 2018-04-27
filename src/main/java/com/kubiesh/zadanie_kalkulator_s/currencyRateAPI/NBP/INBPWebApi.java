@@ -15,9 +15,7 @@ public abstract class INBPWebApi implements ICurrencyRate {
 	protected String currencyCode;
 	
 	@Override
-	public BigDecimal getCurrencyRate(String currencyCode) {
-		return null;
-	}
+	abstract public BigDecimal getCurrencyRate(String currencyCode);
 	
 	public String getFullURL() {
 		String fullURL=url+currencyCode+"format="+format;
