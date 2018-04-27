@@ -30,8 +30,9 @@ public class NBPWebApiJSON extends INBPWebApi {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JsonNode mid = jnode.path("mid");
-	    
+		
+		JsonNode mid = jnode.path("rates").path(0).path("mid");
+		
 	    BigDecimal currencyRate=new BigDecimal(mid.asText());
 		
 		return currencyRate;
