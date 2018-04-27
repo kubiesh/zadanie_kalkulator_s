@@ -16,6 +16,7 @@ public class NBPWebApiJSON extends INBPWebApi {
 	
 	@Override
 	public BigDecimal getCurrencyRate(String currencyCode) {
+		//TO DO: Exception
 		this.currencyCode=currencyCode;
 		
 		RestTemplate restRequest = new RestTemplate();
