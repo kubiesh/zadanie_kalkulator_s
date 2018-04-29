@@ -1,6 +1,7 @@
 package com.kubiesh.zadanie_kalkulator_s.services;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,19 +25,22 @@ public class FinalEarningsCalculator {
 	}
 	
 	public BigDecimal getFinalEarnings(Country country, BigDecimal localEarnings) {
+		BigDecimal finalEarnings;
 		FinalEarningsCalculator.country=country;
 		FinalEarningsCalculator.localEarnings=localEarnings;
 		if (country.getCountryID().equals(finalCountryID)) {
-			return localEarnings;
+			finalEarnings=localEarnings;
 		}
 		else {
-			return calculateInForeignCurrency();
+			finalEarnings= calculateInForeignCurrency();
 		}
+		return finalEarnings.setScale(2, RoundingMode.HALF_EVEN);
 	}
 	
 	private BigDecimal calculateInForeignCurrency() {
 		BigDecimal currencyRate = currencyRateAPI.getCurrencyRate(country.getCurrencyCode());
 		BigDecimal finalEarnings=localEarnings.multiply(currencyRate);
+		finalEarnings=finalEarnings.setScale(2, RoundingMode.HALF_EVEN);
 		return finalEarnings;
 	}
 }
