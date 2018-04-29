@@ -11,12 +11,17 @@ import com.kubiesh.zadanie_kalkulator_s.entities.Country;
 
 @Service
 public class FinalEarningsCalculator {
-	@Autowired
+	
 	private ICurrencyRate currencyRateAPI;
 	
 	public static String finalCountryID;
 	private static Country country;
 	private static BigDecimal localEarnings;
+	
+	@Autowired
+	public FinalEarningsCalculator(ICurrencyRate currencyRateAPI) {
+		this.currencyRateAPI=currencyRateAPI;
+	}
 	
 	public BigDecimal getFinalEarnings(Country country, BigDecimal localEarnings) {
 		FinalEarningsCalculator.country=country;
