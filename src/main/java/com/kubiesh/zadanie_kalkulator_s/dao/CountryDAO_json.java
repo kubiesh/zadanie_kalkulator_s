@@ -51,6 +51,10 @@ public class CountryDAO_json implements ICountryDAO {
 		return workDays;
 	}
 	
+	public String getFinalCountryID() {
+		return finalCountryID;
+	}
+	
 	private void readTreeFromFile() {
 		byte[] jsonData=null;
 		
