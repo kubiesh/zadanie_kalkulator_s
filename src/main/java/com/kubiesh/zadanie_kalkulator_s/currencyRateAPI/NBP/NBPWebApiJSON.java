@@ -25,9 +25,20 @@ public class NBPWebApiJSON extends INBPWebApi {
 		//TO DO: Exception
 		this.currencyCode=currencyCode;
 		
+		ResponseEntity<String> response = getResponseEntity();
+		JsonNode jnode = getResponseBody(response);
+		JsonNode mid = getCurrencyRate(jnode);
+		
+	    BigDecimal currencyRate=new BigDecimal(mid.asText());
+		return currencyRate;
+	}
+	
+	private ResponseEntity<String> getResponseEntity() {
 		RestTemplate restRequest = new RestTemplate();
 		ResponseEntity<String> response = restRequest.getForEntity(this.getFullURL(), String.class);
-		
+		return response;
+	}
+	private JsonNode getResponseBody(ResponseEntity<String> response) {
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jnode=null;
 		try {
@@ -36,13 +47,10 @@ public class NBPWebApiJSON extends INBPWebApi {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		JsonNode mid = jnode.path("rates").path(0).path("mid");
-		
-	    BigDecimal currencyRate=new BigDecimal(mid.asText());
-		
-		return currencyRate;
+		return jnode;
 	}
-	
-	
+	private JsonNode getCurrencyRate(JsonNode jnode) {
+		JsonNode mid = jnode.path("rates").path(0).path("mid");
+		return mid;
+	}
 }
