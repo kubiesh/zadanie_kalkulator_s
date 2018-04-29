@@ -22,9 +22,10 @@ public class NBPWebApiJSON extends INBPWebApi {
 	
 	@Override
 	public BigDecimal getCurrencyRate(String currencyCode) {
-		//TO DO: Exception
+		
 		this.currencyCode=currencyCode;
 		
+		/* I could use private fields instead of using method parameters */
 		ResponseEntity<String> response = getResponseEntity();
 		JsonNode jnode = getResponseBody(response);
 		JsonNode mid = getCurrencyRate(jnode);
