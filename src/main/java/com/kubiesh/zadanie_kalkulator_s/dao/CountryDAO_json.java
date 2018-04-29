@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kubiesh.zadanie_kalkulator_s.entities.Country;
+import com.kubiesh.zadanie_kalkulator_s.services.FinalEarningsCalculator;
 
 @Component
 @PropertySource("classpath:CountryDAO_json.properties")
@@ -80,6 +81,8 @@ public class CountryDAO_json implements ICountryDAO {
 	}
 	private void loadFinalCountryID() {
 		this.finalCountryID=rootNode.path("finalCountryID").asText();
+		// Inelegant dependency
+		FinalEarningsCalculator.finalCountryID=finalCountryID;
 	}
 	
 	private void loadCountries() {
