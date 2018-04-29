@@ -15,15 +15,12 @@ public class FinalEarningsCalculator {
 	private ICurrencyRate currencyRateAPI;
 	
 	public static String finalCountryID;
-	private Country country;
-	private BigDecimal localEarnings;
+	private static Country country;
+	private static BigDecimal localEarnings;
 	
-	public FinalEarningsCalculator(Country country, BigDecimal localEarnings) {
-		this.country=country;
-		this.localEarnings=localEarnings;
-	}
-	
-	public BigDecimal getFinalEarnings() {
+	public BigDecimal getFinalEarnings(Country country, BigDecimal localEarnings) {
+		FinalEarningsCalculator.country=country;
+		FinalEarningsCalculator.localEarnings=localEarnings;
 		if (country.getCountryID().equals(finalCountryID)) {
 			return localEarnings;
 		}
