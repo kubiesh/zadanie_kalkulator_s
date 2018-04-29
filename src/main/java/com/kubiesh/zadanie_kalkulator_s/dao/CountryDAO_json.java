@@ -22,7 +22,7 @@ import com.kubiesh.zadanie_kalkulator_s.services.FinalEarningsCalculator;
 @PropertySource("classpath:CountryDAO_json.properties")
 public class CountryDAO_json implements ICountryDAO {
 	
-	@Value("${dataFilePath}") 
+	
 	private String dataFilePath;
 	private JsonNode rootNode;
 	
@@ -30,7 +30,7 @@ public class CountryDAO_json implements ICountryDAO {
 	private String finalCountryID;
 	private Vector<Country> countries = new Vector<Country>();
 	
-	public CountryDAO_json() {
+	public CountryDAO_json(@Value("${dataFilePath}") String dataFilePath) {
 		readTreeFromFile();
 		loadWorkDays();
 		loadFinalCountryID();
