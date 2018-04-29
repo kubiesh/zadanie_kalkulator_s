@@ -2,12 +2,18 @@ package com.kubiesh.zadanie_kalkulator_s.currencyRateAPI.NBP;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
+@Component
+@Primary
 public class NBPWebApiJSON extends INBPWebApi {
 	
 	public NBPWebApiJSON() {
