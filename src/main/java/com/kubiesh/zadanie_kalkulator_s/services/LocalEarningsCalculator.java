@@ -7,19 +7,24 @@ import org.springframework.context.annotation.PropertySource;
 
 import com.kubiesh.zadanie_kalkulator_s.entities.Country;
 
-@PropertySource("classpath:LocalEarningsCalculator.properties")
+
 public class LocalEarningsCalculator {
 	
 	private Country countryData;
 	private BigDecimal dailyRate;
-	@Value("${dataFilePath}") 
-	private String dataFilePath;
+	private int workDays;
 
-	public LocalEarningsCalculator(String currencyCode, BigDecimal dailyRate) {
-		
+	public LocalEarningsCalculator(Country countryData, BigDecimal dailyRate, int workDays) {
+		this.countryData=countryData;
+		this.dailyRate=dailyRate;
+		this.workDays=workDays;
 	}
 	
-	private void fillCountryData(String currencyCode) {
+	public BigDecimal getLocalEarnings() {
 		
+		BigDecimal localEarnings = dailyRate;
+		
+		
+		//TO DO: whole function after finished CountryDAO
 	}
 }
