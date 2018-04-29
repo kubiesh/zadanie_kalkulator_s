@@ -3,7 +3,6 @@ package com.kubiesh.zadanie_kalkulator_s.services;
 import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import com.kubiesh.zadanie_kalkulator_s.currencyRateAPI.ICurrencyRate;
