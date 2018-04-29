@@ -10,17 +10,20 @@ import com.kubiesh.zadanie_kalkulator_s.entities.Country;
 @Service
 public class LocalEarningsCalculator {
 	
-	private Country countryData;
-	private BigDecimal dailyRate;
-	private int workDays;
+	private static Country countryData;
+	private static BigDecimal dailyRate;
+	private static int workDays;
 
-	public LocalEarningsCalculator(Country countryData, BigDecimal dailyRate, int workDays) {
-		this.countryData=countryData;
-		this.dailyRate=dailyRate;
-		this.workDays=workDays;
-	}
 	
-	public BigDecimal getLocalEarnings() {
+	public BigDecimal getLocalEarnings(Country countryData, BigDecimal dailyRate, int workDays) {
+		LocalEarningsCalculator.countryData=countryData;
+		LocalEarningsCalculator.dailyRate=dailyRate;
+		LocalEarningsCalculator.workDays=workDays;
+		
+		return calculate();
+		
+	}
+	private BigDecimal calculate() {
 		/* (dailyRate*workDays)*(1-taxRate)-fixedCosts */
 		BigDecimal localEarnings = dailyRate.multiply(new BigDecimal(workDays));
 		BigDecimal netPercentage = new BigDecimal(1).subtract(countryData.getTaxRate());
