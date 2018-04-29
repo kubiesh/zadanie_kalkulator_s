@@ -3,10 +3,18 @@ package com.kubiesh.zadanie_kalkulator_s.entities;
 import java.math.BigDecimal;
 
 public class Country {
+	private String countryID;
 	private String countryName;
 	private String currencyCode;
 	private BigDecimal taxRate;
 	private BigDecimal fixedCosts;
+	
+	public String getCountryID() {
+		return countryID;
+	}
+	public void setCountryID(String countryID) {
+		this.countryID = countryID;
+	}
 	
 	public String getCountryName() {
 		return countryName;

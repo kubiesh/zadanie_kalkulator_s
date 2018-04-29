@@ -1,23 +1,27 @@
 {
   "workDays": "22",
-  "countries": {
-    "PL": {
+  "countries": 
+  [
+    {
+		"countryID": "PL",
       "countryName": "Poland",
       "currencyCode": "PLN",
       "taxRate": "0.19",
       "fixedCosts": "1200"
     },
-    "DE": {
+	{
+		"countryID": "DE",
       "countryName": "Germany",
       "currencyCode": "EUR",
       "taxRate": "0.20",
       "fixedCosts": "800"
     },
-    "UK": {
+	{
+		"countryID": "UK",
       "countryName": "United Kingdom",
       "currencyCode": "GBP",
       "taxRate": "0.25",
       "fixedCosts": "600"
     }
-  }
+  ]
 }
