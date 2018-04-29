@@ -24,11 +24,13 @@ public class CountryDAO_json implements ICountryDAO {
 	private JsonNode rootNode;
 	
 	private int workDays;
+	private String finalCountryID;
 	private Vector<Country> countries = new Vector<Country>();
 	
 	public CountryDAO_json() {
 		readTreeFromFile();
 		loadWorkDays();
+		loadFinalCountryID();
 		loadCountries();
 	};
 
@@ -72,6 +74,10 @@ public class CountryDAO_json implements ICountryDAO {
 	private void loadWorkDays() {
 		this.workDays=rootNode.path("workDays").asInt();
 	}
+	private void loadFinalCountryID() {
+		this.finalCountryID=rootNode.path("finalCountryID").asText();
+	}
+	
 	private void loadCountries() {
 		/* Worst possible implementation */
 		JsonNode countriesNode = rootNode.path("countries");
