@@ -19,12 +19,17 @@ import com.kubiesh.zadanie_kalkulator_s.services.LocalEarningsCalculator;
 @RestController
 public class EarningsCalculationController {
 	
-	@Autowired
+	
 	private ICountryDAO countryDAO;
 	@Autowired
 	private LocalEarningsCalculator localEarningsCalculator;
-	@Autowired
 	private FinalEarningsCalculator finalEarningsCalculator;
+	
+	@Autowired
+	public EarningsCalculationController(ICountryDAO countryDAO, FinalEarningsCalculator finalEarningsCalculator) {
+		this.countryDAO=countryDAO;
+		this.finalEarningsCalculator=finalEarningsCalculator;
+	}
 	
 	@GetMapping("/{countryID}/{dailyRate}")
 	@CrossOrigin(origins = "http://localhost:4200")
