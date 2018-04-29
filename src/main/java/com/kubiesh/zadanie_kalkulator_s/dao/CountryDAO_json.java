@@ -19,7 +19,7 @@ import com.kubiesh.zadanie_kalkulator_s.services.FinalEarningsCalculator;
 
 @Component
 @Primary
-@PropertySource("classpath:CountryDAO_json.properties")
+@PropertySource("classpath:countryDAO_json.properties")
 public class CountryDAO_json implements ICountryDAO {
 	
 	
@@ -30,7 +30,7 @@ public class CountryDAO_json implements ICountryDAO {
 	private String finalCountryID;
 	private Vector<Country> countries = new Vector<Country>();
 	
-	public CountryDAO_json(@Value("${dataFilePath}") String dataFilePath) {
+	public CountryDAO_json(@Value("${datafilepath}") String dataFilePath) {
 		readTreeFromFile();
 		loadWorkDays();
 		loadFinalCountryID();
@@ -53,7 +53,7 @@ public class CountryDAO_json implements ICountryDAO {
 	public int getWorkDays() {
 		return workDays;
 	}
-	
+	@Override
 	public String getFinalCountryID() {
 		return finalCountryID;
 	}
