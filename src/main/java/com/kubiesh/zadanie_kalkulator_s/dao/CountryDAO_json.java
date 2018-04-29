@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,7 @@ import com.kubiesh.zadanie_kalkulator_s.entities.Country;
 import com.kubiesh.zadanie_kalkulator_s.services.FinalEarningsCalculator;
 
 @Component
+@Primary
 @PropertySource("classpath:CountryDAO_json.properties")
 public class CountryDAO_json implements ICountryDAO {
 	
