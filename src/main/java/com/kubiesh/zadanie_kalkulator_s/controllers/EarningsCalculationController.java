@@ -25,6 +25,10 @@ public class EarningsCalculationController {
 	private LocalEarningsCalculator localEarningsCalculator;
 	private FinalEarningsCalculator finalEarningsCalculator;
 	
+	private String countryID;
+	private BigDecimal dailyRate;
+	private Country selectedCountry;
+	
 	@Autowired
 	public EarningsCalculationController(ICountryDAO countryDAO, FinalEarningsCalculator finalEarningsCalculator) {
 		this.countryDAO=countryDAO;
@@ -39,19 +43,35 @@ public class EarningsCalculationController {
 			@PathVariable BigDecimal dailyRate
 	) 
 	{
+		this.countryID=countryID;
+		this.dailyRate=dailyRate;
 		
-		Country selectedCountry = null;
-		try {
-		selectedCountry = countryDAO.getCountry(countryID);
+		if (!validate()) {
+		return new ResponseEntity<BigDecimal>(new BigDecimal(0),HttpStatus.BAD_REQUEST);
 		}
-		catch (Exception e) {
-			return new ResponseEntity<BigDecimal>(new BigDecimal(0),HttpStatus.BAD_REQUEST);
-		}
-		
 		BigDecimal localEarnings = localEarningsCalculator.getLocalEarnings(selectedCountry,dailyRate,countryDAO.getWorkDays());
 		BigDecimal finalEarnings = finalEarningsCalculator.getFinalEarnings(selectedCountry,localEarnings);
 		
 		return new ResponseEntity<BigDecimal>(finalEarnings,HttpStatus.OK);
 	}
+	private Boolean validate() {
+		return validateCountry() && validateDailyRate();
+	}
 	
+	private Boolean validateCountry() {
+		try {
+			selectedCountry = countryDAO.getCountry(countryID);
+			}
+			catch (Exception e) {
+				return false;
+			}
+		return true;
+	}
+	private Boolean validateDailyRate() {
+		if(dailyRate.doubleValue()>(double)0) {
+			return true;
+		}
+		return false;
+		
+	}
 }
