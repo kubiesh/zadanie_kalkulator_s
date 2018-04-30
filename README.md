@@ -24,7 +24,7 @@ $ mvn spring-boot:run
 ```
 - Default application port is 8080
 
-### Tests
+## Tests
 > go to project directory
 ```shell
 $ mvn test
