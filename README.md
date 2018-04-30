@@ -40,14 +40,30 @@ Found similiar problems, but solutions does not work for me
 ```shell
 $ mvn test
 ```
+## Specificaton
 
-
-## How to use
-
-- **How it works?**
-- Program gets from client selected country by countryID and daily rate
+### **How it works?**
+- backend gets from client selected country by countryID and daily rate
 - It calculates net earnings in local currency substracted by tax and fixed costs
 - If country is not Poland(by default, data.json) then it calculates earnings in PLN
+
+### **Controllers**
+EarningsCalculationController - gets countryID and daily rate, returns result of calculation specified in task, for wrong data returns 0
+DataFileController - returns data.json, this is for frontend
+
+### **Flexible components**
+- INBPWebAPI - component is prepared for adding another strategy of getting data from NBP Web API, i.e. in XML or some new format in the future
+- ICountryDAO - component is prepared for adding another strategy of getting database from file etc. for now primary strategy is parsing data from data.json file
+
+### **Cons**
+- Method CountryDAO_json.loadCountries() is not most elegant solution, I think it can be done better
+- Program might be not secured for exceptions caused by not working NBP Web API
+
+### **Pros**
+- You don't have to change the code to add/modify/delete countries data(tax rates, fixed costs), work days and final currency. Just edit data.json file
+- data.json file path and url for NBP Web API is stored outside the code in .properties files
+
+## How to use
 
 - **How do to check if it works?**
 >as frontend is not finished, go to your web browser and type country ID and gross daily rate, i.e
