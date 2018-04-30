@@ -14,7 +14,7 @@
 ### Build
 > go to project directory
 ```shell
-$ mvn clean install
+$ mvn install
 ```
 
 ### Run
