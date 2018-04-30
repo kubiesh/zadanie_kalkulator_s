@@ -5,7 +5,7 @@
 
 ## Installation
 
-- All the `code` required to get started
+- All the `code` except for src/main/frontend required to get started, Angular frontend is not ready
 
 ### Clone
 
@@ -40,6 +40,12 @@ http://localhost:8080/api/UK/120.00
 http://localhost:8080/api/DE/210.50
 http://localhost:8080/api/PL/180.50
 ```
+- **How to show database?**
+>go to your web browser and enter this URL
+```shell
+http://localhost:8080/data
+```
+Appeared content is unformatted database from JSON file
 
 ## Built with
 
