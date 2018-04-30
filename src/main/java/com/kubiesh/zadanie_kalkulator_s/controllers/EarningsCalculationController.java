@@ -31,7 +31,7 @@ public class EarningsCalculationController {
 		this.finalEarningsCalculator=finalEarningsCalculator;
 	}
 	
-	@GetMapping("/{countryID}/{dailyRate}")
+	@GetMapping("/api/{countryID}/{dailyRate}")
 	@CrossOrigin(origins = "http://localhost:4200")
 	public ResponseEntity<BigDecimal> calculateEarnings
 	(
