@@ -30,7 +30,8 @@ public class CountryDAO_json implements ICountryDAO {
 	private String finalCountryID;
 	private Vector<Country> countries = new Vector<Country>();
 	
-	public CountryDAO_json(@Value("${datafilepath}") String dataFilePath) {
+	public CountryDAO_json(@Value("${datafilepath}")String dataFilePath) {
+		this.dataFilePath=dataFilePath;
 		readTreeFromFile();
 		loadWorkDays();
 		loadFinalCountryID();
@@ -42,7 +43,7 @@ public class CountryDAO_json implements ICountryDAO {
 		Iterator<Country> it = countries.iterator();
 		while (it.hasNext()) {
 			Country country=it.next();
-			if (countryID==country.getCountryID()) {
+			if (countryID.equals(country.getCountryID())) {
 				return country;
 			}
 		}
@@ -100,7 +101,7 @@ public class CountryDAO_json implements ICountryDAO {
 			country.setCountryName(element.path("countryName").asText());
 			country.setCurrencyCode(element.path("currencyCode").asText());;
 			country.setTaxRate(new BigDecimal(element.path("taxRate").asText()));
-			country.setFixedCosts(new BigDecimal(element.path("taxRate").asText()));
+			country.setFixedCosts(new BigDecimal(element.path("fixedCosts").asText()));
 			
 			countries.addElement(country);
 		}
