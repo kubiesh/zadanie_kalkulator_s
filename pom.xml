@@ -12,10 +12,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    
   </properties>
   
-<!--  <build>
+ <build>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -23,12 +22,12 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.7.0</version>
           <configuration>
-            put your configurations here
+            <!-- put your configurations here -->
           </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
-  </build> -->
+  </build>
   
   
 	<parent>
