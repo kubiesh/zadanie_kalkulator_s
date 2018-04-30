@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class NBPWebApiJSON extends INBPWebApi {
 	
 	public NBPWebApiJSON() {
+		super();
 		this.format="json";
 	}
 	

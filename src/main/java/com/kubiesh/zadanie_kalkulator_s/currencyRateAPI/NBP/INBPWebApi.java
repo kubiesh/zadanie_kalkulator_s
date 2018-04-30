@@ -20,7 +20,7 @@ public abstract class INBPWebApi implements ICurrencyRate {
 	abstract public BigDecimal getCurrencyRate(String currencyCode);
 	
 	public String getFullURL() {
-		String fullURL=url+currencyCode+"format="+format;
+		String fullURL=url+currencyCode+"?format="+format;
 		return fullURL;
 	}
 
