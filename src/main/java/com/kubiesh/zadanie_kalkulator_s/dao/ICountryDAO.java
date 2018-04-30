@@ -6,4 +6,5 @@ public interface ICountryDAO {
 	Country getCountry(String countryID);
 	int getWorkDays();
 	String getFinalCountryID();
+	byte[] getDataFile();
 }

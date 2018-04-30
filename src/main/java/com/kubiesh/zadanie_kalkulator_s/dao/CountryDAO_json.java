@@ -24,7 +24,9 @@ public class CountryDAO_json implements ICountryDAO {
 	
 	
 	private String dataFilePath;
+	private byte[] jsonData;
 	private JsonNode rootNode;
+	
 	
 	private int workDays;
 	private String finalCountryID;
@@ -58,9 +60,13 @@ public class CountryDAO_json implements ICountryDAO {
 	public String getFinalCountryID() {
 		return finalCountryID;
 	}
+	@Override
+	public byte[] getDataFile() {
+		return jsonData;
+	}
+	
 	
 	private void readTreeFromFile() {
-		byte[] jsonData=null;
 		
 		try {
 			jsonData = Files.readAllBytes(Paths.get(dataFilePath));
