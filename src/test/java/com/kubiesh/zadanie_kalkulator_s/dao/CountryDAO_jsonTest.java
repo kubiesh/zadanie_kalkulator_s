@@ -22,7 +22,12 @@ public class CountryDAO_jsonTest {
 	@Test
 	public void testGetCountry() {
 		Country expected = countrySetupPL();
-		Country actual = component.getCountry("PL");
+		Country actual=null;
+		try {
+			actual = component.getCountry("PL");
+		} catch (Exception e) {
+			//Do nothing
+		}
 		assertEqualsCountry(expected,actual);
 	}
 

@@ -41,7 +41,7 @@ public class CountryDAO_json implements ICountryDAO {
 	};
 
 	@Override
-	public Country getCountry(String countryID) {
+	public Country getCountry(String countryID) throws Exception {
 		Iterator<Country> it = countries.iterator();
 		while (it.hasNext()) {
 			Country country=it.next();
@@ -49,7 +49,7 @@ public class CountryDAO_json implements ICountryDAO {
 				return country;
 			}
 		}
-		return null; //Never return null
+		throw new Exception();
 	}
 
 	@Override
