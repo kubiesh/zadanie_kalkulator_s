@@ -48,8 +48,8 @@ $ mvn test
 - If country is not Poland(by default, data.json) then it calculates earnings in PLN
 
 ### **Controllers**
-EarningsCalculationController - gets countryID and daily rate, returns result of calculation specified in task, for wrong data returns 0
-DataFileController - returns data.json, this is for frontend
+- EarningsCalculationController - gets countryID and daily rate, returns result of calculation specified in task, for wrong data returns 0
+- DataFileController - returns data.json, this is for frontend
 
 ### **Flexible components**
 - INBPWebAPI - component is prepared for adding another strategy of getting data from NBP Web API, i.e. in XML or some new format in the future
