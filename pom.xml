@@ -25,6 +25,23 @@
             <!-- put your configurations here -->
           </configuration>
         </plugin>
+        <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.9</version>
+        <executions>
+          <execution>
+            <id>build-classpath</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>build-classpath</goal>
+            </goals>
+            <configuration>
+              <!-- configure the plugin here -->
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       </plugins>
     </pluginManagement>
   </build>
